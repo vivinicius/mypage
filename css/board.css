@@ -5,6 +5,41 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
+   PC DECORATION VIDEO
+═══════════════════════════════════════════════════════════ */
+#pc-video-wrap {
+    position: absolute;
+    left: 13%;
+    top: 80%;
+    width: 40vw;
+    z-index: 7;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#pc-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#pc-video.floating {
+    animation: pc-float 7s linear infinite;
+}
+
+@keyframes pc-float {
+    0%    { transform: translate(12px,  0px);  }
+    12.5% { transform: translate(9px,   6px);  }
+    25%   { transform: translate(0px,   8px);  }
+    37.5% { transform: translate(-9px,  6px);  }
+    50%   { transform: translate(-12px, 0px);  }
+    62.5% { transform: translate(-9px, -6px);  }
+    75%   { transform: translate(0px,  -8px);  }
+    87.5% { transform: translate(9px,  -6px);  }
+    100%  { transform: translate(12px,  0px);  }
+}
+
+/* ═══════════════════════════════════════════════════════════
    BOARD WINDOW
 ═══════════════════════════════════════════════════════════ */
 #board-window {
@@ -267,11 +302,12 @@
     border: 1px solid #21262d;
     border-radius: 8px;
     padding: 0.8rem 0.9rem;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
 
 .board-card:hover {
-    border-color: #388bfd44;
+    background: #161b22;
+    border-color: #388bfd88;
     transform: translateY(-2px);
 }
 
@@ -350,17 +386,42 @@
    FOOTER
 ═══════════════════════════════════════════════════════════ */
 #contact {
-    background: #161b22 !important;
-    border-top: 1px solid #21262d;
+    background: #0d1117 !important;
+    border-top: none;
+    padding: 0 !important;
 }
 
-#contact .contact-info p,
-#contact .footer-links a {
+.construction-stripe {
+    height: 28px;
+    background: repeating-linear-gradient(
+        -45deg,
+        #f0b429,
+        #f0b429 14px,
+        #0d1117  14px,
+        #0d1117  28px
+    );
+}
+
+#contact .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 2.5rem 1rem;
+}
+
+.wip-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f0b429;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#contact .contact-info p {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.9rem;
     color: #8b949e !important;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-#contact .footer-links a:hover {
-    color: #3fb950 !important;
-    border-bottom-color: #3fb950 !important;
+    margin: 0;
 }

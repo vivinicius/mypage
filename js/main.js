@@ -25,6 +25,8 @@ class App {
             textFill:        document.querySelector('.text-fill'),
             experienceText:  document.getElementById('experience-text'),
             boardWindow:     document.getElementById('board-window'),
+            pcVideoWrap:     document.getElementById('pc-video-wrap'),
+            pcVideo:         document.getElementById('pc-video'),
             scrollIndicator: document.getElementById('scroll-indicator'),
             initialScroll:   document.getElementById('scrollIcon'),
             swarmCanvas:     document.getElementById('swarmCanvas'),
@@ -146,6 +148,30 @@ class App {
         if (this.nodes.boardWindow) {
             this.nodes.boardWindow.style.opacity = lp.toFixed(4);
             this.nodes.boardWindow.style.pointerEvents = lp > 0.05 ? 'auto' : 'none';
+        }
+
+        if (this.nodes.pcVideoWrap) {
+            const slideOffset = (1 - lp) * (-window.innerWidth);
+            this.nodes.pcVideoWrap.style.transform = `translateX(calc(-50% + ${slideOffset}px)) translateY(-50%)`;
+            this.nodes.pcVideoWrap.style.opacity = lp.toFixed(4);
+        }
+
+        if (this.nodes.pcVideo) {
+            if (lp >= 1.0) {
+                // Só dispara se estiver pausado E ainda não tiver terminado
+                if (this.nodes.pcVideo.paused && !this.nodes.pcVideo.ended) {
+                    this.nodes.pcVideo.play().catch(() => {});
+                }
+                // Ativa o movimento orbital ao chegar na posição final
+                this.nodes.pcVideo.classList.add('floating');
+            } else {
+                // Ao sair: pausa, reseta e remove o float
+                if (!this.nodes.pcVideo.paused) {
+                    this.nodes.pcVideo.pause();
+                }
+                this.nodes.pcVideo.currentTime = 0;
+                this.nodes.pcVideo.classList.remove('floating');
+            }
         }
 
         if (this.nodes.scrollIndicator) {

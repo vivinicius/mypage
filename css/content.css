@@ -4,7 +4,7 @@
     position: relative;
     background-color: #fff;
     z-index: 5;
-    padding-bottom: 20vh;
+    padding-bottom: 0;
 }
 
 .section {
@@ -154,7 +154,7 @@
 /* Footer / Contact */
 #contact {
     text-align: center;
-    padding: 15vh 4.5vw;
+    padding: 0;
     background-color: #f9f9f9;
 }
 

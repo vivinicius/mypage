@@ -16,6 +16,7 @@
     <!-- Scripts -->
     <script defer src="js/loader.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/board.js"></script>
 </head>
 <body>
     
@@ -106,70 +107,399 @@
     </div>
 
     <div id="content-area">
-        <section class="section" id="experiences">
-            <div class="timeline">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="period">03/2024 - Atual</span>
-                        <h3>DBC / Cliente Unicred</h3>
-                        <h4>Analista de Automação de Testes</h4>
-                        <p>Responsável pelos testes manuais e automatizados do aplicativo Unicred na área de consórcios. Desenvolvimento de scripts em Python, integração de CI/CD com Jenkins e Azure DevOps.</p>
+        <div id="jira-board">
+
+            <!-- ── HEADER ── -->
+            <div class="board-header">
+                <div class="board-header-left">
+                    <div class="board-avatar">VF</div>
+                    <div class="board-identity">
+                        <div class="board-title-row">
+                            <span class="board-name">Victor Ferreira</span>
+                            <span class="board-sep">/</span>
+                            <span class="board-role">QA Automation Analyst</span>
+                        </div>
+                        <div class="board-sprint">Sprint 2025.01</div>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="period">03/2022 - 03/2024</span>
-                        <h3>NTT DATA / Cliente Sicred</h3>
-                        <h4>Analista de Automação de Testes</h4>
-                        <p>Automação mobile (iOS/Android) com Java e Appium. Integração com Browserstack e pipelines GitLab. Atuação em Squad ágil focada em produtos financeiros e crédito.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="period">01/2020 - 03/2022</span>
-                        <h3>Taking / Cliente Alelo</h3>
-                        <h4>Analista de Automação de Testes</h4>
-                        <p>Automação de Web APIs e Apps Mobile usando Java, Appium e Cucumber. Desenvolvimento de frameworks BDD e gestão de pipelines de teste no Azure DevOps.</p>
-                    </div>
+                <nav class="board-nav">
+                    <button class="board-tab active" data-tab="skills">Skills</button>
+                    <button class="board-tab" data-tab="experiencia">Experiência</button>
+                    <button class="board-tab" data-tab="formacao">Formação</button>
+                    <button class="board-tab" data-tab="extras">Extras</button>
+                </nav>
+                <div class="board-header-right">
+                    <span class="board-location">📍 São Paulo, SP</span>
+                    <span class="board-status"><span class="status-dot"></span>Online</span>
                 </div>
             </div>
-        </section>
 
-        <section class="section" id="skills-education">
-            <div class="grid-container">
-                <div class="skills-block">
-                    <h2 class="section-title">Habilidades</h2>
-                    <div class="skills-grid">
-                        <span class="skill-tag">Java / Python</span>
-                        <span class="skill-tag">Appium / Selenium</span>
-                        <span class="skill-tag">Rest Assured</span>
-                        <span class="skill-tag">CI/CD (Jenkins/GitLab)</span>
-                        <span class="skill-tag">Azure DevOps</span>
-                        <span class="skill-tag">Cucumber / BDD</span>
-                        <span class="skill-tag">Browserstack</span>
+            <!-- ── STATS BAR ── -->
+            <div class="board-stats-bar">
+                <div class="board-stats-left">
+                    <div class="stat-item">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-num">10</span>
+                        <span class="stat-label">TOTAL SKILLS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">📅</span>
+                        <span class="stat-num">7+</span>
+                        <span class="stat-label">ANOS DE XP</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🚀</span>
+                        <span class="stat-num">5</span>
+                        <span class="stat-label">PROJETOS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🏅</span>
+                        <span class="stat-num">1</span>
+                        <span class="stat-label">CERTIFICAÇÕES</span>
                     </div>
                 </div>
-
-                <div class="education-block">
-                    <h2 class="section-title">Formação</h2>
-                    <div class="edu-item">
-                        <span class="year">2018 - 2022</span>
-                        <p><strong>Bacharelado em Sistemas de Informação</strong><br>FIAP</p>
-                    </div>
-                    <div class="edu-item">
-                        <span class="year">2021 - 2022</span>
-                        <p><strong>Certified Software Tester (CSTE)</strong><br>Quality Assurance Institute</p>
-                    </div>
+                <div class="board-legend">
+                    <span class="legend-item"><span class="legend-dot basic"></span>Básico</span>
+                    <span class="legend-item"><span class="legend-dot inter"></span>Intermediário</span>
+                    <span class="legend-item"><span class="legend-dot advanced"></span>Avançado</span>
                 </div>
             </div>
-        </section>
+
+            <!-- ── BOARD BODY ── -->
+            <div class="board-body">
+
+                <!-- SKILLS -->
+                <div class="board-tab-panel active" id="panel-skills">
+                    <div class="board-columns">
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot basic"></span>
+                                <span class="col-title">BÁSICO</span>
+                                <span class="col-count">2</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-007</span>
+                                        <span class="priority low">LOW</span>
+                                    </div>
+                                    <div class="card-title">🌐 Espanhol</div>
+                                    <div class="card-tags">
+                                        <span class="tag">idioma</span>
+                                        <span class="tag">comunicação</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-008</span>
+                                        <span class="priority low">LOW</span>
+                                    </div>
+                                    <div class="card-title">⚡ Gatling (Performance)</div>
+                                    <div class="card-desc">Testes de performance e carga.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">performance</span>
+                                        <span class="tag">load-testing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot inter"></span>
+                                <span class="col-title">INTERMEDIÁRIO</span>
+                                <span class="col-count">4</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-003</span>
+                                        <span class="priority medium">MEDIUM</span>
+                                    </div>
+                                    <div class="card-title">⚡ Python</div>
+                                    <div class="card-desc">Automação de testes e scripts com Python.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">backend</span>
+                                        <span class="tag">scripting</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-004</span>
+                                        <span class="priority medium">MEDIUM</span>
+                                    </div>
+                                    <div class="card-title">⚙️ CI/CD Pipelines</div>
+                                    <div class="card-desc">Jenkins, GitLab CI, Azure DevOps pipelines.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">devops</span>
+                                        <span class="tag">jenkins</span>
+                                        <span class="tag">gitlab</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-005</span>
+                                        <span class="priority medium">MEDIUM</span>
+                                    </div>
+                                    <div class="card-title">🌐 Inglês</div>
+                                    <div class="card-tags">
+                                        <span class="tag">idioma</span>
+                                        <span class="tag">comunicação</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-009</span>
+                                        <span class="priority medium">MEDIUM</span>
+                                    </div>
+                                    <div class="card-title">🥒 BDD / Cucumber</div>
+                                    <div class="card-desc">Cenários de teste com Gherkin e Cucumber.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">bdd</span>
+                                        <span class="tag">gherkin</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot advanced"></span>
+                                <span class="col-title">AVANÇADO</span>
+                                <span class="col-count">4</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-001</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">📱 Automação Mobile</div>
+                                    <div class="card-desc">Appium com Java, PageObjects, iOS & Android, Device Farm & BrowserStack.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">appium</span>
+                                        <span class="tag">java</span>
+                                        <span class="tag">mobile</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-002</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">🔌 Automação API REST</div>
+                                    <div class="card-desc">Frameworks de automação API, geração de reports e métricas.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">api</span>
+                                        <span class="tag">rest</span>
+                                        <span class="tag">java</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-006</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">☕ Java + Selenium</div>
+                                    <div class="card-desc">Framework completo de automação Web com Java.</div>
+                                    <div class="card-tags">
+                                        <span class="tag">java</span>
+                                        <span class="tag">selenium</span>
+                                        <span class="tag">web</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">SKL-010</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">🌐 Português</div>
+                                    <div class="card-tags">
+                                        <span class="tag">native</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- EXPERIÊNCIA -->
+                <div class="board-tab-panel" id="panel-experiencia">
+                    <div class="board-columns">
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot advanced"></span>
+                                <span class="col-title">ATUAL</span>
+                                <span class="col-count">1</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EXP-001</span>
+                                        <span class="priority critical">CRITICAL</span>
+                                    </div>
+                                    <div class="card-title">Analista de Automação — Unicred</div>
+                                    <div class="card-desc">Testes manuais e automatizados do app Unicred. Automação em Python, CI/CD com Jenkins e Azure DevOps.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 03/2024 - Atual</span>
+                                        <span class="meta-company">🏢 DK Company</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">python</span>
+                                        <span class="tag">jenkins</span>
+                                        <span class="tag">azure</span>
+                                        <span class="tag">mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot inter"></span>
+                                <span class="col-title">ANTERIORES</span>
+                                <span class="col-count">3</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EXP-002</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">Analista de Automação — Sicredi</div>
+                                    <div class="card-desc">Automação mobile iOS/Android com Appium e Java. Integração BrowserStack, pipeline GitLab.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 03/2022 - 03/2024</span>
+                                        <span class="meta-company">🏢 NTT DATA</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">appium</span>
+                                        <span class="tag">browserstack</span>
+                                        <span class="tag">gitlab</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EXP-003</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">Analista de Automação — Alelo</div>
+                                    <div class="card-desc">Automação Web, API e Mobile com Java, Appium e Cucumber. Frameworks BDD e pipelines Azure DevOps.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 01/2020 - 03/2022</span>
+                                        <span class="meta-company">🏢 Taking</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">appium</span>
+                                        <span class="tag">java</span>
+                                        <span class="tag">cucumber</span>
+                                        <span class="tag">api</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EXP-004</span>
+                                        <span class="priority medium">MEDIUM</span>
+                                    </div>
+                                    <div class="card-title">Analista de Automação — PagBank</div>
+                                    <div class="card-desc">Testes automatizados backend e mobile. Performance com Gatling, Selenium e Jenkins.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 01/2019 - 11/2019</span>
+                                        <span class="meta-company">🏢 Taking / PagSeguro</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">gatling</span>
+                                        <span class="tag">jenkins</span>
+                                        <span class="tag">mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- FORMAÇÃO -->
+                <div class="board-tab-panel" id="panel-formacao">
+                    <div class="board-columns">
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot advanced"></span>
+                                <span class="col-title">ACADÊMICA</span>
+                                <span class="col-count">2</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EDU-001</span>
+                                    </div>
+                                    <div class="card-title">🏛️ Bacharelado em Sistemas de Informação</div>
+                                    <div class="card-desc">FIAP — Faculdade de Informática e Administração Paulista.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 2018 - 2023</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">graduação</span>
+                                        <span class="tag">TI</span>
+                                    </div>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">EDU-002</span>
+                                    </div>
+                                    <div class="card-title">📚 Ensino Médio</div>
+                                    <div class="card-desc">Fundação Bradesco.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 2015 - 2017</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">ensino-médio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- EXTRAS -->
+                <div class="board-tab-panel" id="panel-extras">
+                    <div class="board-columns">
+
+                        <div class="board-column">
+                            <div class="col-header">
+                                <span class="col-dot advanced"></span>
+                                <span class="col-title">CERTIFICAÇÕES</span>
+                                <span class="col-count">1</span>
+                            </div>
+                            <div class="col-cards">
+                                <div class="board-card">
+                                    <div class="card-header">
+                                        <span class="card-id">CERT-001</span>
+                                        <span class="priority high">HIGH</span>
+                                    </div>
+                                    <div class="card-title">🏆 CSTE — Certified Software Tester</div>
+                                    <div class="card-desc">Quality Assurance Institute.</div>
+                                    <div class="card-meta">
+                                        <span class="meta-date">📅 2023 - 2025</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class="tag">certificação</span>
+                                        <span class="tag">QA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- /board-body -->
+        </div><!-- /jira-board -->
 
         <footer id="contact">
             <div class="contact-info">

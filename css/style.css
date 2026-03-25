@@ -1,0 +1,6 @@
+/* css/style.css - Arquivo Mestre que orquestra os componentes */
+
+@import url('./global.css');
+@import url('./hero.css');
+@import url('./terminal.css');
+@import url('./content.css');

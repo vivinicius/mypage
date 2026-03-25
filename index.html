@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Ferreira | Test Automation Specialist</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Scripts -->
+    <script defer src="js/loader.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
+        <filter id="remove-white">
+            <feColorMatrix type="matrix" values="0 0 0 0 0
+                                              0 0 0 0 0
+                                              0 0 0 0 0
+                                              -2 -2 -2 5 0" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="1.5" intercept="-0.1" />
+            </feComponentTransfer>
+        </filter>
+    </svg>
+
+    <div id="hero-wrapper">
+        <section id="hero">
+            <canvas id="swarmCanvas"></canvas>
+            
+            <div id="experience-text" class="reveal-text">
+                <span class="text-base">ABOUT ME</span>
+                <span class="text-fill">ABOUT ME</span>
+            </div>
+            
+            <div id="lore-section">
+                <video id="pc-animation" src="assets/VideoPcSemFundo2.webm" muted playsinline preload="auto"></video>
+                <div id="lore-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="t-btn close"></span>
+                            <span class="t-btn minimize"></span>
+                            <span class="t-btn expand"></span>
+                        </div>
+                        <div class="terminal-title">victor@portfolio: ~/about_me</div>
+                    </div>
+                    <div id="lore-text" class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="user">victor</span><span class="at">@</span><span class="host">portfolio</span> 
+                            <span class="path">~</span> <span class="branch"> main</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt-arrow">❯</span> <span id="typing-command-1"></span>
+                        </div>
+                        <div id="command-output-1" class="command-output"></div>
+                        
+                        <div id="prompt-line-2" class="terminal-line" style="display: none;">
+                            <span class="prompt-arrow">❯</span> <span id="typing-command-2"></span>
+                        </div>
+                        <div id="typing-content" class="command-output"><span class="cursor">_</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <img src="assets/scroll_icon.png" alt="Scroll Down" class="scroll-icon" id="scroll-indicator" style="opacity: 0;">
+
+            <div id="hero-inner">
+                <div id="loader"></div>
+                <canvas id="bgCanvas"></canvas>
+
+                <nav>
+                    <video id="sig-video" src="assets/AssinaturaSemFundo.webm" muted playsinline autoplay></video>
+                    
+                    <div class="name">
+                        <span class="first-name">Victor</span>
+                        <span class="last-name">Ferreira</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/victorvinife/" target="_blank" rel="noopener noreferrer" class="linkedin">
+                        <img src="assets/linkedin.png" alt="Linkedin" class="linkedin-icon">
+                    </a>
+                </nav>
+
+                <main class="container">
+                    <div class="text-layer">
+                        <h1 class="bg-text">QA</h1>
+                        <canvas id="brushCanvas"></canvas>
+                    </div>
+
+                    <img src="assets/euteste2.png" alt="Victor" class="profile-img" id="profileImg">
+                    <img src="assets/scroll_icon.png" alt="Scroll Down" class="scroll-icon" id="scrollIcon">
+                    
+                    <div class="experience-badge">
+                        <span class="exp-number">7+</span>
+                        <span class="exp-text">years experience</span>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </div>
+
+    <div id="content-area">
+        <section class="section" id="experiences">
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="period">03/2024 - Atual</span>
+                        <h3>DBC / Cliente Unicred</h3>
+                        <h4>Analista de Automação de Testes</h4>
+                        <p>Responsável pelos testes manuais e automatizados do aplicativo Unicred na área de consórcios. Desenvolvimento de scripts em Python, integração de CI/CD com Jenkins e Azure DevOps.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="period">03/2022 - 03/2024</span>
+                        <h3>NTT DATA / Cliente Sicred</h3>
+                        <h4>Analista de Automação de Testes</h4>
+                        <p>Automação mobile (iOS/Android) com Java e Appium. Integração com Browserstack e pipelines GitLab. Atuação em Squad ágil focada em produtos financeiros e crédito.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="period">01/2020 - 03/2022</span>
+                        <h3>Taking / Cliente Alelo</h3>
+                        <h4>Analista de Automação de Testes</h4>
+                        <p>Automação de Web APIs e Apps Mobile usando Java, Appium e Cucumber. Desenvolvimento de frameworks BDD e gestão de pipelines de teste no Azure DevOps.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills-education">
+            <div class="grid-container">
+                <div class="skills-block">
+                    <h2 class="section-title">Habilidades</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Java / Python</span>
+                        <span class="skill-tag">Appium / Selenium</span>
+                        <span class="skill-tag">Rest Assured</span>
+                        <span class="skill-tag">CI/CD (Jenkins/GitLab)</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                        <span class="skill-tag">Cucumber / BDD</span>
+                        <span class="skill-tag">Browserstack</span>
+                    </div>
+                </div>
+
+                <div class="education-block">
+                    <h2 class="section-title">Formação</h2>
+                    <div class="edu-item">
+                        <span class="year">2018 - 2022</span>
+                        <p><strong>Bacharelado em Sistemas de Informação</strong><br>FIAP</p>
+                    </div>
+                    <div class="edu-item">
+                        <span class="year">2021 - 2022</span>
+                        <p><strong>Certified Software Tester (CSTE)</strong><br>Quality Assurance Institute</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="contact-info">
+                <p>São Paulo, Brasil</p>
+                <p>vi_viniciusferreira@outlook.com</p>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/victorvinife/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

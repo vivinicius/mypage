@@ -3,7 +3,6 @@ import { lerp, RevealObserver } from './utils.js';
 import { WaveSystem } from './waves.js';
 import { FluidSimulation } from './fluid.js';
 import { SwarmSystem } from './swarm.js';
-import { TypingSystem } from './systems/TypingSystem.js';
 
 class App {
     constructor() {
@@ -25,13 +24,7 @@ class App {
             brushCanvas:     document.getElementById('brushCanvas'),
             textFill:        document.querySelector('.text-fill'),
             experienceText:  document.getElementById('experience-text'),
-            loreSection:     document.getElementById('lore-section'),
-            pcAnimation:     document.getElementById('pc-animation'),
-            typingCommand1:  document.getElementById('typing-command-1'),
-            commandOutput1:  document.getElementById('command-output-1'),
-            promptLine2:     document.getElementById('prompt-line-2'),
-            typingCommand2:  document.getElementById('typing-command-2'),
-            typingContent:   document.getElementById('typing-content'),
+            boardWindow:     document.getElementById('board-window'),
             scrollIndicator: document.getElementById('scroll-indicator'),
             initialScroll:   document.getElementById('scrollIcon'),
             swarmCanvas:     document.getElementById('swarmCanvas'),
@@ -51,15 +44,12 @@ class App {
         this.waves = new WaveSystem(this.nodes.bgCanvas);
         this.fluid = new FluidSimulation(this.nodes.brushCanvas);
         this.swarm = new SwarmSystem(this.nodes.swarmCanvas);
-        this.typing = new TypingSystem(this.nodes, CONFIG.content.loreText, this.nodes.pcAnimation);
     }
 
     initEvents() {
         window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
         document.addEventListener('mousemove', (e) => this.handleMouse(e));
         document.addEventListener('mouseleave', () => this.handleMouseLeave());
-        
-        new RevealObserver('.timeline-item, .skills-block, .education-block');
     }
 
     handleScroll() {
@@ -68,11 +58,11 @@ class App {
         const { scroll: cfg } = CONFIG;
 
         this.state.scrollProgress = Math.min(scrollY / h, 1.0);
-        
+
         const fillStart = h * cfg.fillStartFactor;
         const fillEnd = h * cfg.fillEndFactor;
         const fillProgress = Math.max(0, Math.min((scrollY - fillStart) / (fillEnd - fillStart), 1.0));
-        
+
         if (this.nodes.textFill) {
             this.nodes.textFill.style.width = `${(fillProgress * 100).toFixed(2)}%`;
         }
@@ -93,7 +83,7 @@ class App {
 
     handleMouse(e) {
         const { mouse, parallax } = this.state;
-        
+
         if (this.swarm) this.swarm.updateMouse(e.clientX, e.clientY);
 
         parallax.imgTX = (window.innerWidth / 2 - e.pageX) / CONFIG.parallax.moveFactor;
@@ -116,7 +106,7 @@ class App {
     updateParallax() {
         const { parallax } = this.state;
         const L = CONFIG.parallax.lerp;
-        
+
         parallax.imgCX = lerp(parallax.imgCX, parallax.imgTX, L);
         parallax.imgCY = lerp(parallax.imgCY, parallax.imgTY, L);
         this.nodes.profileImg.style.transform = `translate(${parallax.imgCX}px, ${parallax.imgCY}px)`;
@@ -130,16 +120,16 @@ class App {
         const p = this.state.scrollProgress;
         const lp = this.state.loreProgress || 0;
         const { scaleMin, borderMax } = CONFIG.scroll;
-        
+
         const scale = 1.0 - (1.0 - scaleMin) * p;
         const radius = borderMax * p;
         const opacity = Math.pow(1.0 - p, 1.5);
-        
+
         this.nodes.heroInner.style.transform = `scale(${scale.toFixed(4)})`;
         this.nodes.heroInner.style.borderRadius = `${radius.toFixed(2)}px`;
         this.nodes.heroInner.style.opacity = opacity.toFixed(4);
         this.nodes.heroInner.style.pointerEvents = (p > 0.9) ? 'none' : 'auto';
-        
+
         if (this.nodes.initialScroll) {
             const initialOpacity = Math.max(0, 1.0 - (p / 0.05));
             this.nodes.initialScroll.style.opacity = initialOpacity.toFixed(4);
@@ -153,14 +143,9 @@ class App {
             this.nodes.experienceText.style.fontSize = `${fontSize}vw`;
         }
 
-        if (this.nodes.loreSection) {
-            this.nodes.loreSection.style.opacity = lp.toFixed(4);
-            const loreTop = 62 - (2 * lp);
-            this.nodes.loreSection.style.top = `${loreTop}%`;
-
-            if (lp > 0.3) {
-                this.typing.start();
-            }
+        if (this.nodes.boardWindow) {
+            this.nodes.boardWindow.style.opacity = lp.toFixed(4);
+            this.nodes.boardWindow.style.pointerEvents = lp > 0.05 ? 'auto' : 'none';
         }
 
         if (this.nodes.scrollIndicator) {
@@ -168,17 +153,17 @@ class App {
             const scrollY = window.scrollY;
             const lockThreshold = h * CONFIG.scroll.lockThresholdFactor;
             const iconAppearStart = h * CONFIG.scroll.loreEndFactor;
-            
+
             let iconOpacity = 0;
             if (lp >= 1.0 && scrollY >= iconAppearStart) {
                 iconOpacity = Math.min(1.0, (scrollY - iconAppearStart) / (h * 0.4));
             }
-            
+
             if (scrollY > lockThreshold) {
                 const fadeOut = Math.max(0, 1.0 - (scrollY - lockThreshold) / (h * 0.2));
                 iconOpacity *= fadeOut;
             }
-            
+
             this.nodes.scrollIndicator.style.opacity = iconOpacity.toFixed(4);
             this.nodes.scrollIndicator.style.pointerEvents = (iconOpacity > 0.1) ? 'auto' : 'none';
         }
@@ -202,10 +187,10 @@ class App {
         this.updateParallax();
         this.updateFluid();
         if (this.swarm) this.swarm.draw();
-        
+
         this.waves.draw(t);
         this.fluid.render();
-        
+
         requestAnimationFrame((t) => this.render(t));
     }
 }

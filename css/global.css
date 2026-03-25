@@ -76,9 +76,9 @@ body, html {
 }
 
 /* --- Menu do Topo --- */
-nav {
+#hero-inner nav {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: flex-start;
     padding: 6vh 4vw;
     position: absolute;

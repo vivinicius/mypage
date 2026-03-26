@@ -26,6 +26,7 @@ export const CONFIG = {
     parallax: {
         moveFactor: 60,
         qaMoveFactor: 120,
+        boardMoveFactor: 90,
         lerp: 0.07
     },
 

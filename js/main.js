@@ -34,7 +34,7 @@ class App {
             scrollProgress: 0,
             loreProgress: 0,
             mouse: { x: 0, y: 0, prevX: 0, prevY: 0, onPage: false, pendingSplat: false },
-            parallax: { imgCX: 0, imgCY: 0, imgTX: 0, imgTY: 0, qaCX: 0, qaCY: 0, qaTX: 0, qaTY: 0 }
+            parallax: { imgCX: 0, imgCY: 0, imgTX: 0, imgTY: 0, qaCX: 0, qaCY: 0, qaTX: 0, qaTY: 0, boardCX: 0, boardCY: 0, boardTX: 0, boardTY: 0 }
         };
     }
 
@@ -86,6 +86,8 @@ class App {
         parallax.imgTY = Math.max(0, (window.innerHeight / 2 - e.pageY) / CONFIG.parallax.moveFactor);
         parallax.qaTX = -(window.innerWidth / 2 - e.pageX) / CONFIG.parallax.qaMoveFactor;
         parallax.qaTY = -(window.innerHeight / 2 - e.pageY) / CONFIG.parallax.qaMoveFactor;
+        parallax.boardTX = (window.innerWidth / 2 - e.pageX) / CONFIG.parallax.boardMoveFactor;
+        parallax.boardTY = (window.innerHeight / 2 - e.pageY) / CONFIG.parallax.boardMoveFactor;
 
         mouse.prevX = mouse.x; mouse.prevY = mouse.y;
         mouse.x = e.clientX; mouse.y = e.clientY;
@@ -97,6 +99,7 @@ class App {
         this.state.mouse.onPage = false;
         this.state.parallax.imgTX = 0; this.state.parallax.imgTY = 0;
         this.state.parallax.qaTX = 0;  this.state.parallax.qaTY = 0;
+        this.state.parallax.boardTX = 0; this.state.parallax.boardTY = 0;
     }
 
     updateParallax() {
@@ -110,6 +113,12 @@ class App {
         parallax.qaCX = lerp(parallax.qaCX, parallax.qaTX, L);
         parallax.qaCY = lerp(parallax.qaCY, parallax.qaTY, L);
         this.nodes.textLayer.style.transform = `translate(${parallax.qaCX}px, ${parallax.qaCY}px)`;
+
+        parallax.boardCX = lerp(parallax.boardCX, parallax.boardTX, L);
+        parallax.boardCY = lerp(parallax.boardCY, parallax.boardTY, L);
+        if (this.nodes.boardWindow) {
+            this.nodes.boardWindow.style.transform = `translateX(calc(-50% + ${parallax.boardCX}px)) translateY(${parallax.boardCY}px)`;
+        }
     }
 
     updateScrollEffects() {

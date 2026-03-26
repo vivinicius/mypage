@@ -2,7 +2,6 @@ import { CONFIG } from './config.js';
 import { lerp, RevealObserver } from './utils.js';
 import { WaveSystem } from './waves.js';
 import { FluidSimulation } from './fluid.js';
-import { SwarmSystem } from './swarm.js';
 
 class App {
     constructor() {
@@ -25,11 +24,8 @@ class App {
             textFill:        document.querySelector('.text-fill'),
             experienceText:  document.getElementById('experience-text'),
             boardWindow:     document.getElementById('board-window'),
-            pcVideoWrap:     document.getElementById('pc-video-wrap'),
-            pcVideo:         document.getElementById('pc-video'),
             scrollIndicator: document.getElementById('scroll-indicator'),
             initialScroll:   document.getElementById('scrollIcon'),
-            swarmCanvas:     document.getElementById('swarmCanvas'),
         };
     }
 
@@ -45,7 +41,7 @@ class App {
     initSystems() {
         this.waves = new WaveSystem(this.nodes.bgCanvas);
         this.fluid = new FluidSimulation(this.nodes.brushCanvas);
-        this.swarm = new SwarmSystem(this.nodes.swarmCanvas);
+
     }
 
     initEvents() {
@@ -85,8 +81,6 @@ class App {
 
     handleMouse(e) {
         const { mouse, parallax } = this.state;
-
-        if (this.swarm) this.swarm.updateMouse(e.clientX, e.clientY);
 
         parallax.imgTX = (window.innerWidth / 2 - e.pageX) / CONFIG.parallax.moveFactor;
         parallax.imgTY = Math.max(0, (window.innerHeight / 2 - e.pageY) / CONFIG.parallax.moveFactor);
@@ -150,30 +144,6 @@ class App {
             this.nodes.boardWindow.style.pointerEvents = lp > 0.05 ? 'auto' : 'none';
         }
 
-        if (this.nodes.pcVideoWrap) {
-            const slideOffset = (1 - lp) * (-window.innerWidth);
-            this.nodes.pcVideoWrap.style.transform = `translateX(calc(-50% + ${slideOffset}px)) translateY(-50%)`;
-            this.nodes.pcVideoWrap.style.opacity = lp.toFixed(4);
-        }
-
-        if (this.nodes.pcVideo) {
-            if (lp >= 1.0) {
-                // Só dispara se estiver pausado E ainda não tiver terminado
-                if (this.nodes.pcVideo.paused && !this.nodes.pcVideo.ended) {
-                    this.nodes.pcVideo.play().catch(() => {});
-                }
-                // Ativa o movimento orbital ao chegar na posição final
-                this.nodes.pcVideo.classList.add('floating');
-            } else {
-                // Ao sair: pausa, reseta e remove o float
-                if (!this.nodes.pcVideo.paused) {
-                    this.nodes.pcVideo.pause();
-                }
-                this.nodes.pcVideo.currentTime = 0;
-                this.nodes.pcVideo.classList.remove('floating');
-            }
-        }
-
         if (this.nodes.scrollIndicator) {
             const h = window.innerHeight;
             const scrollY = window.scrollY;
@@ -212,8 +182,6 @@ class App {
         this.updateScrollEffects();
         this.updateParallax();
         this.updateFluid();
-        if (this.swarm) this.swarm.draw();
-
         this.waves.draw(t);
         this.fluid.render();
 
@@ -223,4 +191,21 @@ class App {
 
 document.addEventListener('DOMContentLoaded', () => {
     new App();
+
+    // Lenis — smooth scroll nativo com inércia para mouse e trackpad
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration:        1.3,
+            easing:          t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel:     true,
+            wheelMultiplier: 1,
+        });
+
+        function lenisRaf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(lenisRaf);
+        }
+        requestAnimationFrame(lenisRaf);
+    }
 });
+

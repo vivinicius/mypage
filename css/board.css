@@ -7,38 +7,6 @@
 /* ═══════════════════════════════════════════════════════════
    PC DECORATION VIDEO
 ═══════════════════════════════════════════════════════════ */
-#pc-video-wrap {
-    position: absolute;
-    left: 13%;
-    top: 77%;
-    width: 30vw;
-    z-index: 7;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateX(calc(-50% + -100vw)) translateY(-50%);
-}
-
-#pc-video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-#pc-video.floating {
-    animation: pc-float 7s linear infinite;
-}
-
-@keyframes pc-float {
-    0%    { transform: translate(12px,  0px);  }
-    12.5% { transform: translate(9px,   6px);  }
-    25%   { transform: translate(0px,   8px);  }
-    37.5% { transform: translate(-9px,  6px);  }
-    50%   { transform: translate(-12px, 0px);  }
-    62.5% { transform: translate(-9px, -6px);  }
-    75%   { transform: translate(0px,  -8px);  }
-    87.5% { transform: translate(9px,  -6px);  }
-    100%  { transform: translate(12px,  0px);  }
-}
 
 /* ═══════════════════════════════════════════════════════════
    BOARD WINDOW

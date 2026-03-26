@@ -1,5 +1,47 @@
 // js/board.js
 
+// ── Column width expansion (overflow horizontal) ──────────────
+// Quando os cards de uma coluna ultrapassam a altura disponível,
+// a coluna expande sua largura e os cards fluem para a direita
+// via flex-wrap, sem criar novas colunas no DOM.
+function updateColumnWidths() {
+    const panel = document.querySelector('.board-tab-panel.active');
+    if (!panel) return;
+
+    panel.querySelectorAll('.board-column').forEach(col => {
+        col.style.removeProperty('width');
+        col.style.removeProperty('flex');
+        col.style.removeProperty('max-width');
+    });
+
+    panel.querySelectorAll('.board-column').forEach(col => {
+        const header  = col.querySelector('.col-header');
+        const cardsEl = col.querySelector('.col-cards');
+        if (!header || !cardsEl) return;
+
+        const availH = col.clientHeight - header.offsetHeight;
+        if (availH <= 0) return;
+
+        const cards  = Array.from(cardsEl.querySelectorAll(':scope > .board-card'));
+        const style  = getComputedStyle(cardsEl);
+        const GAP    = parseFloat(style.rowGap)     || 10;
+        const colGAP = parseFloat(style.columnGap)  || GAP;
+        const PAD    = parseFloat(style.paddingLeft) || 10;
+        const CARD_W = 260; // deve bater com width do .board-card
+
+        let numSubCols = 1;
+        if (cards.length > 0) {
+            const totalH = cards.reduce((s, c, i) => s + c.offsetHeight + (i > 0 ? GAP : 0), 0);
+            if (totalH > availH) numSubCols = Math.ceil(totalH / availH);
+        }
+
+        const newW = numSubCols * CARD_W + (numSubCols - 1) * colGAP + 2 * PAD;
+        col.style.flex     = 'none';
+        col.style.maxWidth = 'none';
+        col.style.width    = `${newW}px`;
+    });
+}
+
 // ── Tab switching ────────────────────────────────────────────
 document.querySelectorAll('.board-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -8,6 +50,7 @@ document.querySelectorAll('.board-tab').forEach(tab => {
         document.querySelectorAll('.board-tab-panel').forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
         document.getElementById(`panel-${target}`).classList.add('active');
+        requestAnimationFrame(updateColumnWidths);
     });
 });
 
@@ -117,9 +160,10 @@ modal.querySelectorAll('.activity-tab').forEach(tab => {
     });
 });
 
-// Open on card click
-document.querySelectorAll('.board-card').forEach(card => {
-    card.addEventListener('click', () => openModal(card));
+// Open on card click — usa delegação para funcionar com cards movidos por split
+document.querySelector('#jira-board').addEventListener('click', e => {
+    const card = e.target.closest('.board-card');
+    if (card && !e.target.closest('.modal-action-btn')) openModal(card);
 });
 
 closeBtn.addEventListener('click', closeModal);
@@ -134,4 +178,13 @@ modal.querySelectorAll('.modal-action-btn').forEach(btn => {
         btn.classList.add('no-action');
         setTimeout(() => btn.classList.remove('no-action'), 600);
     });
+});
+
+// ── Inicialização ───────────────────────────────────────────
+requestAnimationFrame(updateColumnWidths);
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateColumnWidths, 150);
 });

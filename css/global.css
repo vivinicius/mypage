@@ -40,29 +40,28 @@ body, html {
 }
 
 #sig-video {
-    position: absolute; /* Sempre absoluto dentro do nav */
-    /* Calcula o centro da tela relativo ao nav */
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%); /* Centraliza perfeitamente no centro da janela */
-    width: 50vw;
-    height: auto;
-    max-height: 50vh;
-    object-fit: contain;
-    display: block;
-    z-index: 10001;
-    filter: url(#remove-white);
-    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-    pointer-events: none;
-    margin-top: -6vh; /* Compensa o padding do nav para o centro real */
-    margin-left: -4vw; /* Compensa o padding do nav para o centro real */
+    display: none;
 }
 
-/* Classe que move a assinatura para a posição do nome original */
-#sig-video.mini-signature {
-    top: 0; 
-    left: 0; 
-    transform: translate(0, 0); 
+#sig-canvas {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    max-height: 50vh;
+    display: block;
+    z-index: 10001;
+    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none;
+    margin-top: -6vh;
+    margin-left: -4vw;
+}
+
+#sig-canvas.mini-signature {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
     margin-top: 0;
     margin-left: 0;
     width: 20vw;

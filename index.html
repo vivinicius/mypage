@@ -71,8 +71,8 @@
                 <div class="board-nav-bar">
                     <nav class="board-nav">
                         <button class="board-tab active" data-tab="skills">Skills</button>
-                        <button class="board-tab" data-tab="experiencia">Experiência</button>
-                        <button class="board-tab" data-tab="formacao">Formação</button>
+                        <button class="board-tab" data-tab="experiencia">Experience</button>
+                        <button class="board-tab" data-tab="formacao">Education</button>
                         <button class="board-tab" data-tab="extras">Extras</button>
                     </nav>
                 </div>
@@ -87,41 +87,67 @@
                         <div class="board-tab-panel active" id="panel-skills">
                             <div class="board-columns">
 
+                                <!-- BÁSICO -->
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot basic"></span>
-                                        <span class="col-title">BÁSICO</span>
-                                        <span class="col-count">2</span>
+                                        <span class="col-title">BASIC</span>
+                                        <span class="col-count">3</span>
                                     </div>
                                     <div class="col-cards">
                                         <div class="board-card">
                                             <div class="card-header">
-                                                <span class="card-id">SKL-007</span>
+                                                <span class="card-id">SKL-013</span>
                                                 <span class="priority low">LOW</span>
                                             </div>
-                                            <div class="card-title">Espanhol</div>
+                                            <div class="card-title">HTML & CSS</div>
+                                            <div class="card-desc">Basic knowledge of HTML and CSS for building and customizing web interfaces.</div>
                                             <div class="card-tags">
-                                                <span class="tag purple">idioma</span>
-                                                <span class="tag purple">comunicação</span>
+                                                <span class="tag blue">frontend</span>
+                                                <span class="tag orange">html</span>
+                                                <span class="tag blue">css</span>
+                                                <span class="tag purple">ui</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
                                                     <span class="assignee-avatar">VF</span>
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
-                                                <span class="card-points">2 pts</span>
+                                                <span class="card-points">3 pts</span>
                                             </div>
                                         </div>
                                         <div class="board-card">
                                             <div class="card-header">
-                                                <span class="card-id">SKL-008</span>
+                                                <span class="card-id">SKL-014</span>
                                                 <span class="priority low">LOW</span>
                                             </div>
-                                            <div class="card-title">Gatling (Performance)</div>
-                                            <div class="card-desc">Testes de performance e carga.</div>
+                                            <div class="card-title">Gatling (Performance Testing)</div>
+                                            <div class="card-desc">Basic performance testing using Gatling for load and stress test scenarios.</div>
                                             <div class="card-tags">
                                                 <span class="tag red">performance</span>
                                                 <span class="tag red">load-testing</span>
+                                                <span class="tag orange">gatling</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">3 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-015</span>
+                                                <span class="priority low">LOW</span>
+                                            </div>
+                                            <div class="card-title">ADB (Android Debug)</div>
+                                            <div class="card-desc">Usage of ADB for interacting with Android devices and debugging automation flows.</div>
+                                            <div class="card-tags">
+                                                <span class="tag purple">android</span>
+                                                <span class="tag orange">adb</span>
+                                                <span class="tag yellow">debug</span>
+                                                <span class="tag purple">mobile</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -134,23 +160,26 @@
                                     </div>
                                 </div>
 
+                                <!-- INTERMEDIÁRIO -->
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot inter"></span>
-                                        <span class="col-title">INTERMEDIÁRIO</span>
-                                        <span class="col-count">4</span>
+                                        <span class="col-title">INTERMEDIATE</span>
+                                        <span class="col-count">5</span>
                                     </div>
                                     <div class="col-cards">
                                         <div class="board-card">
                                             <div class="card-header">
-                                                <span class="card-id">SKL-003</span>
+                                                <span class="card-id">SKL-008</span>
                                                 <span class="priority medium">MEDIUM</span>
                                             </div>
-                                            <div class="card-title">Python</div>
-                                            <div class="card-desc">Automação de testes e scripts com Python.</div>
+                                            <div class="card-title">Python (Automation & Scripting)</div>
+                                            <div class="card-desc">Development of automation scripts and data processing using Python for testing and integrations.</div>
                                             <div class="card-tags">
-                                                <span class="tag purple">backend</span>
+                                                <span class="tag yellow">python</span>
                                                 <span class="tag yellow">scripting</span>
+                                                <span class="tag green">automation</span>
+                                                <span class="tag purple">backend</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -158,44 +187,6 @@
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
                                                 <span class="card-points">5 pts</span>
-                                            </div>
-                                        </div>
-                                        <div class="board-card">
-                                            <div class="card-header">
-                                                <span class="card-id">SKL-004</span>
-                                                <span class="priority medium">MEDIUM</span>
-                                            </div>
-                                            <div class="card-title">CI/CD Pipelines</div>
-                                            <div class="card-desc">Jenkins, GitLab CI, Azure DevOps pipelines.</div>
-                                            <div class="card-tags">
-                                                <span class="tag teal">devops</span>
-                                                <span class="tag teal">jenkins</span>
-                                                <span class="tag teal">gitlab</span>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="card-assignee">
-                                                    <span class="assignee-avatar">VF</span>
-                                                    <span class="assignee-name">Victor Ferreira</span>
-                                                </div>
-                                                <span class="card-points">5 pts</span>
-                                            </div>
-                                        </div>
-                                        <div class="board-card">
-                                            <div class="card-header">
-                                                <span class="card-id">SKL-005</span>
-                                                <span class="priority medium">MEDIUM</span>
-                                            </div>
-                                            <div class="card-title">Inglês</div>
-                                            <div class="card-tags">
-                                                <span class="tag purple">idioma</span>
-                                                <span class="tag purple">comunicação</span>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="card-assignee">
-                                                    <span class="assignee-avatar">VF</span>
-                                                    <span class="assignee-name">Victor Ferreira</span>
-                                                </div>
-                                                <span class="card-points">4 pts</span>
                                             </div>
                                         </div>
                                         <div class="board-card">
@@ -203,28 +194,95 @@
                                                 <span class="card-id">SKL-009</span>
                                                 <span class="priority medium">MEDIUM</span>
                                             </div>
-                                            <div class="card-title">BDD / Cucumber</div>
-                                            <div class="card-desc">Cenários de teste com Gherkin e Cucumber.</div>
+                                            <div class="card-title">CI/CD Automation (Jenkins, GitLab)</div>
+                                            <div class="card-desc">Integration of automated tests into CI/CD pipelines using Jenkins and GitLab CI.</div>
                                             <div class="card-tags">
-                                                <span class="tag purple">bdd</span>
-                                                <span class="tag yellow">gherkin</span>
+                                                <span class="tag teal">ci</span>
+                                                <span class="tag teal">cd</span>
+                                                <span class="tag teal">jenkins</span>
+                                                <span class="tag teal">gitlab</span>
+                                                <span class="tag teal">devops</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
                                                     <span class="assignee-avatar">VF</span>
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
-                                                <span class="card-points">4 pts</span>
+                                                <span class="card-points">6 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-010</span>
+                                                <span class="priority medium">MEDIUM</span>
+                                            </div>
+                                            <div class="card-title">BrowserStack (Cloud Testing)</div>
+                                            <div class="card-desc">Execution of automated tests on cloud device farms for cross-platform validation.</div>
+                                            <div class="card-tags">
+                                                <span class="tag blue">cloud</span>
+                                                <span class="tag orange">browserstack</span>
+                                                <span class="tag purple">mobile</span>
+                                                <span class="tag green">testing</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">5 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-011</span>
+                                                <span class="priority medium">MEDIUM</span>
+                                            </div>
+                                            <div class="card-title">API Testing Concepts</div>
+                                            <div class="card-desc">Understanding of API testing concepts including validation, contract testing, and data handling.</div>
+                                            <div class="card-tags">
+                                                <span class="tag green">api</span>
+                                                <span class="tag green">testing</span>
+                                                <span class="tag blue">validation</span>
+                                                <span class="tag blue">contracts</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">5 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-012</span>
+                                                <span class="priority medium">MEDIUM</span>
+                                            </div>
+                                            <div class="card-title">AI / Computer Vision (YOLO)</div>
+                                            <div class="card-desc">Use of computer vision models (YOLO) for object detection and intelligent automation workflows.</div>
+                                            <div class="card-tags">
+                                                <span class="tag purple">ai</span>
+                                                <span class="tag orange">yolo</span>
+                                                <span class="tag purple">computer-vision</span>
+                                                <span class="tag green">automation</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">6 pts</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- AVANÇADO -->
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot advanced"></span>
-                                        <span class="col-title">AVANÇADO</span>
-                                        <span class="col-count">4</span>
+                                        <span class="col-title">ADVANCED</span>
+                                        <span class="col-count">7</span>
                                     </div>
                                     <div class="col-cards">
                                         <div class="board-card">
@@ -232,12 +290,13 @@
                                                 <span class="card-id">SKL-001</span>
                                                 <span class="priority high">HIGH</span>
                                             </div>
-                                            <div class="card-title">Automação Mobile</div>
-                                            <div class="card-desc">Appium com Java, PageObjects, iOS & Android, Device Farm & BrowserStack.</div>
+                                            <div class="card-title">Web Automation with Java (Selenium)</div>
+                                            <div class="card-desc">Automated end-to-end web testing using Selenium WebDriver with Java, applying Page Object Model and scalable test architecture.</div>
                                             <div class="card-tags">
-                                                <span class="tag orange">appium</span>
                                                 <span class="tag blue">java</span>
-                                                <span class="tag blue">mobile</span>
+                                                <span class="tag green">selenium</span>
+                                                <span class="tag blue">web</span>
+                                                <span class="tag green">automation</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -252,12 +311,14 @@
                                                 <span class="card-id">SKL-002</span>
                                                 <span class="priority high">HIGH</span>
                                             </div>
-                                            <div class="card-title">Automação API REST</div>
-                                            <div class="card-desc">Frameworks de automação API, geração de reports e métricas.</div>
+                                            <div class="card-title">Mobile Automation (Appium)</div>
+                                            <div class="card-desc">Mobile test automation for Android and iOS using Appium, including device farms and cross-platform validation.</div>
                                             <div class="card-tags">
-                                                <span class="tag green">api</span>
-                                                <span class="tag green">rest</span>
+                                                <span class="tag orange">appium</span>
                                                 <span class="tag blue">java</span>
+                                                <span class="tag purple">mobile</span>
+                                                <span class="tag purple">android</span>
+                                                <span class="tag purple">ios</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -265,43 +326,110 @@
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
                                                 <span class="card-points">8 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-003</span>
+                                                <span class="priority high">HIGH</span>
+                                            </div>
+                                            <div class="card-title">API Test Automation (Rest-Assured)</div>
+                                            <div class="card-desc">Automated API testing using Rest-Assured, including validation, chaining requests, and response assertions.</div>
+                                            <div class="card-tags">
+                                                <span class="tag green">api</span>
+                                                <span class="tag green">rest</span>
+                                                <span class="tag blue">java</span>
+                                                <span class="tag green">automation</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">8 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-004</span>
+                                                <span class="priority high">HIGH</span>
+                                            </div>
+                                            <div class="card-title">BDD with Cucumber</div>
+                                            <div class="card-desc">Behavior-driven development using Cucumber and Gherkin for readable and maintainable test scenarios.</div>
+                                            <div class="card-tags">
+                                                <span class="tag yellow">bdd</span>
+                                                <span class="tag yellow">cucumber</span>
+                                                <span class="tag yellow">gherkin</span>
+                                                <span class="tag green">automation</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">7 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">SKL-005</span>
+                                                <span class="priority critical">CRITICAL</span>
+                                            </div>
+                                            <div class="card-title">Test Automation Framework Design</div>
+                                            <div class="card-desc">Design and implementation of scalable automation frameworks using best practices like POM and layered architecture.</div>
+                                            <div class="card-tags">
+                                                <span class="tag teal">architecture</span>
+                                                <span class="tag teal">framework</span>
+                                                <span class="tag green">qa</span>
+                                                <span class="tag purple">design</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">9 pts</span>
                                             </div>
                                         </div>
                                         <div class="board-card">
                                             <div class="card-header">
                                                 <span class="card-id">SKL-006</span>
-                                                <span class="priority high">HIGH</span>
+                                                <span class="priority critical">CRITICAL</span>
                                             </div>
-                                            <div class="card-title">Java + Selenium</div>
-                                            <div class="card-desc">Framework completo de automação Web com Java.</div>
+                                            <div class="card-title">Test Strategy & QA Practices</div>
+                                            <div class="card-desc">Definition of QA strategy, test planning, and quality processes across multiple squads and environments.</div>
                                             <div class="card-tags">
-                                                <span class="tag blue">java</span>
-                                                <span class="tag green">selenium</span>
-                                                <span class="tag blue">web</span>
+                                                <span class="tag green">qa</span>
+                                                <span class="tag purple">strategy</span>
+                                                <span class="tag purple">process</span>
+                                                <span class="tag green">quality</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
                                                     <span class="assignee-avatar">VF</span>
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
-                                                <span class="card-points">8 pts</span>
+                                                <span class="card-points">9 pts</span>
                                             </div>
                                         </div>
                                         <div class="board-card">
                                             <div class="card-header">
-                                                <span class="card-id">SKL-010</span>
+                                                <span class="card-id">SKL-007</span>
                                                 <span class="priority high">HIGH</span>
                                             </div>
-                                            <div class="card-title">Português</div>
+                                            <div class="card-title">Git & Version Control (GitFlow, PR Review)</div>
+                                            <div class="card-desc">Source control management using Git, including branching strategies, pull requests, and code review practices.</div>
                                             <div class="card-tags">
-                                                <span class="tag green">native</span>
+                                                <span class="tag orange">git</span>
+                                                <span class="tag orange">version-control</span>
+                                                <span class="tag blue">collaboration</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
                                                     <span class="assignee-avatar">VF</span>
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
-                                                <span class="card-points">5 pts</span>
+                                                <span class="card-points">7 pts</span>
                                             </div>
                                         </div>
                                     </div>
@@ -310,14 +438,15 @@
                             </div>
                         </div>
 
-                        <!-- EXPERIÊNCIA -->
+                        <!-- EXPERIENCE -->
                         <div class="board-tab-panel" id="panel-experiencia">
                             <div class="board-columns">
 
+                                <!-- CURRENT -->
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot advanced"></span>
-                                        <span class="col-title">ATUAL</span>
+                                        <span class="col-title">CURRENT</span>
                                         <span class="col-count">1</span>
                                     </div>
                                     <div class="col-cards">
@@ -326,10 +455,10 @@
                                                 <span class="card-id">EXP-001</span>
                                                 <span class="priority critical">CRITICAL</span>
                                             </div>
-                                            <div class="card-title">Analista de Automação — Unicred</div>
-                                            <div class="card-desc">Testes manuais e automatizados do app Unicred. Automação em Python, CI/CD com Jenkins e Azure DevOps.</div>
+                                            <div class="card-title">Automation Analyst — Unicred</div>
+                                            <div class="card-desc">Responsible for manual and automated testing of the Unicred app (consortium area). Developed Python automation scripts and CI/CD pipelines with Jenkins. Used Azure DevOps for task management and versioning. Worked with Web APIs and mobile feature validation.</div>
                                             <div class="card-meta">
-                                                <span class="meta-date">📅 03/2024 - Atual</span>
+                                                <span class="meta-date">📅 03/2024 - Present</span>
                                                 <span class="meta-company">🏢 DBC Company</span>
                                             </div>
                                             <div class="card-tags">
@@ -337,6 +466,8 @@
                                                 <span class="tag teal">jenkins</span>
                                                 <span class="tag teal">azure</span>
                                                 <span class="tag blue">mobile</span>
+                                                <span class="tag green">api</span>
+                                                <span class="tag teal">ci/cd</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -349,11 +480,12 @@
                                     </div>
                                 </div>
 
+                                <!-- PREVIOUS -->
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot inter"></span>
-                                        <span class="col-title">ANTERIORES</span>
-                                        <span class="col-count">3</span>
+                                        <span class="col-title">PREVIOUS</span>
+                                        <span class="col-count">4</span>
                                     </div>
                                     <div class="col-cards">
                                         <div class="board-card">
@@ -361,16 +493,20 @@
                                                 <span class="card-id">EXP-002</span>
                                                 <span class="priority high">HIGH</span>
                                             </div>
-                                            <div class="card-title">Analista de Automação — Sicredi</div>
-                                            <div class="card-desc">Automação mobile iOS/Android com Appium e Java. Integração BrowserStack, pipeline GitLab.</div>
+                                            <div class="card-title">Automation Analyst — Sicredi (Digiagro)</div>
+                                            <div class="card-desc">Responsible for automating the Digiagro app (iOS and Android), integrating with BrowserStack device farm and GitLab CI pipeline. Worked in an agile squad focused on agile testing for digital banking portals. Used Jira for task management and automated execution report generation.</div>
                                             <div class="card-meta">
                                                 <span class="meta-date">📅 03/2022 - 03/2024</span>
                                                 <span class="meta-company">🏢 NTT DATA</span>
                                             </div>
                                             <div class="card-tags">
                                                 <span class="tag orange">appium</span>
-                                                <span class="tag blue">browserstack</span>
+                                                <span class="tag blue">java</span>
+                                                <span class="tag orange">browserstack</span>
                                                 <span class="tag teal">gitlab</span>
+                                                <span class="tag purple">ios</span>
+                                                <span class="tag purple">android</span>
+                                                <span class="tag blue">jira</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -385,8 +521,8 @@
                                                 <span class="card-id">EXP-003</span>
                                                 <span class="priority high">HIGH</span>
                                             </div>
-                                            <div class="card-title">Analista de Automação — Alelo</div>
-                                            <div class="card-desc">Automação Web, API e Mobile com Java, Appium e Cucumber. Frameworks BDD e pipelines Azure DevOps.</div>
+                                            <div class="card-title">Automation Analyst — Alelo (Meu Alelo)</div>
+                                            <div class="card-desc">Responsible for automating the Meu Alelo and MeuEc apps (iOS and Android) and the full Web API layer. Developed mobile automation framework with Appium, Java, Cucumber and PageObjects (BDT). Built REST API framework with report generation and metrics. Integrated Jenkins CI/CD pipelines and used Azure DevOps for task management.</div>
                                             <div class="card-meta">
                                                 <span class="meta-date">📅 01/2020 - 03/2022</span>
                                                 <span class="meta-company">🏢 Taking</span>
@@ -394,8 +530,12 @@
                                             <div class="card-tags">
                                                 <span class="tag orange">appium</span>
                                                 <span class="tag blue">java</span>
-                                                <span class="tag purple">cucumber</span>
+                                                <span class="tag yellow">cucumber</span>
                                                 <span class="tag green">api</span>
+                                                <span class="tag green">rest</span>
+                                                <span class="tag teal">jenkins</span>
+                                                <span class="tag teal">azure</span>
+                                                <span class="tag yellow">bdd</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -410,16 +550,19 @@
                                                 <span class="card-id">EXP-004</span>
                                                 <span class="priority medium">MEDIUM</span>
                                             </div>
-                                            <div class="card-title">Analista de Automação — PagBank</div>
-                                            <div class="card-desc">Testes automatizados backend e mobile. Performance com Gatling, Selenium e Jenkins.</div>
+                                            <div class="card-title">Automation Analyst — PagBank</div>
+                                            <div class="card-desc">Responsible for automated test development for the PagBank app, covering backend and mobile frontend. Developed performance tests with Gatling. Managed activities in Jira (stories, bugs, tasks). Created BDD test scenarios and automated test pipelines with Jenkins.</div>
                                             <div class="card-meta">
-                                                <span class="meta-date">📅 01/2019 - 11/2019</span>
+                                                <span class="meta-date">📅 01/2019 - 12/2019</span>
                                                 <span class="meta-company">🏢 Taking / PagSeguro</span>
                                             </div>
                                             <div class="card-tags">
                                                 <span class="tag red">gatling</span>
                                                 <span class="tag teal">jenkins</span>
                                                 <span class="tag blue">mobile</span>
+                                                <span class="tag yellow">bdd</span>
+                                                <span class="tag blue">jira</span>
+                                                <span class="tag red">performance</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -427,6 +570,34 @@
                                                     <span class="assignee-name">Victor Ferreira</span>
                                                 </div>
                                                 <span class="card-points">5 pts</span>
+                                            </div>
+                                        </div>
+                                        <div class="board-card">
+                                            <div class="card-header">
+                                                <span class="card-id">EXP-005</span>
+                                                <span class="priority low">LOW</span>
+                                            </div>
+                                            <div class="card-title">Automation Analyst Jr — Cielo</div>
+                                            <div class="card-desc">Worked in an agile squad responsible for the full mobile app automation. Developed mobile automation framework with Appium, Java, Cucumber and PageObjects (BDT). Built REST API automation framework with report generation and prepared DeviceFarm and Jenkins CI/CD integration.</div>
+                                            <div class="card-meta">
+                                                <span class="meta-date">📅 01/2018 - 01/2019</span>
+                                                <span class="meta-company">🏢 RSI Informatica</span>
+                                            </div>
+                                            <div class="card-tags">
+                                                <span class="tag orange">appium</span>
+                                                <span class="tag blue">java</span>
+                                                <span class="tag yellow">cucumber</span>
+                                                <span class="tag green">api</span>
+                                                <span class="tag teal">jenkins</span>
+                                                <span class="tag yellow">bdd</span>
+                                                <span class="tag purple">mobile</span>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-assignee">
+                                                    <span class="assignee-avatar">VF</span>
+                                                    <span class="assignee-name">Victor Ferreira</span>
+                                                </div>
+                                                <span class="card-points">3 pts</span>
                                             </div>
                                         </div>
                                     </div>
@@ -442,7 +613,7 @@
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot advanced"></span>
-                                        <span class="col-title">ACADÊMICA</span>
+                                        <span class="col-title">ACADEMIC</span>
                                         <span class="col-count">2</span>
                                     </div>
                                     <div class="col-cards">
@@ -450,14 +621,14 @@
                                             <div class="card-header">
                                                 <span class="card-id">EDU-001</span>
                                             </div>
-                                            <div class="card-title">Bacharelado em Sistemas de Informação</div>
-                                            <div class="card-desc">FIAP — Faculdade de Informática e Administração Paulista.</div>
+                                            <div class="card-title">B.Sc. in Information Systems</div>
+                                            <div class="card-desc">FIAP — College of Informatics and Business Administration.</div>
                                             <div class="card-meta">
                                                 <span class="meta-date">📅 2018 - 2023</span>
                                             </div>
                                             <div class="card-tags">
-                                                <span class="tag purple">graduação</span>
-                                                <span class="tag blue">TI</span>
+                                                <span class="tag purple">degree</span>
+                                                <span class="tag blue">IT</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -471,13 +642,13 @@
                                             <div class="card-header">
                                                 <span class="card-id">EDU-002</span>
                                             </div>
-                                            <div class="card-title">Ensino Médio</div>
+                                            <div class="card-title">High School</div>
                                             <div class="card-desc">Fundação Bradesco.</div>
                                             <div class="card-meta">
                                                 <span class="meta-date">📅 2015 - 2017</span>
                                             </div>
                                             <div class="card-tags">
-                                                <span class="tag">ensino-médio</span>
+                                                <span class="tag">high-school</span>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="card-assignee">
@@ -500,7 +671,7 @@
                                 <div class="board-column">
                                     <div class="col-header">
                                         <span class="col-dot advanced"></span>
-                                        <span class="col-title">CERTIFICAÇÕES</span>
+                                        <span class="col-title">CERTIFICATIONS</span>
                                         <span class="col-count">1</span>
                                     </div>
                                     <div class="col-cards">
@@ -515,7 +686,7 @@
                                                 <span class="meta-date">📅 2023 - 2025</span>
                                             </div>
                                             <div class="card-tags">
-                                                <span class="tag yellow">certificação</span>
+                                                <span class="tag yellow">certification</span>
                                                 <span class="tag green">QA</span>
                                             </div>
                                             <div class="card-footer">
@@ -576,7 +747,7 @@
         <footer id="contact">
             <div class="construction-stripe"></div>
             <div class="contact-info">
-                <span class="wip-label">Site em desenvolvimento</span>
+                <span class="wip-label">Site under development</span>
                 <p>vi_viniciusferreira@outlook.com</p>
             </div>
             <div class="construction-stripe"></div>
@@ -595,7 +766,7 @@
                 </div>
                 <div class="modal-header-right">
                     <span class="modal-col-status"></span>
-                    <button class="modal-close" aria-label="Fechar">×</button>
+                    <button class="modal-close" aria-label="Close">×</button>
                 </div>
             </div>
 
@@ -612,32 +783,32 @@
             <!-- Body -->
             <div class="modal-body">
 
-                <!-- Left: Descrição + Atividade -->
+                <!-- Left: Description + Activity -->
                 <div class="modal-main">
                     <div class="modal-section">
-                        <div class="modal-section-label">Descrição</div>
+                        <div class="modal-section-label">Description</div>
                         <p class="modal-desc"></p>
                     </div>
                     <div class="modal-section">
-                        <div class="modal-section-label">Atividade</div>
+                        <div class="modal-section-label">Activity</div>
                         <div class="modal-activity-tabs">
-                            <span class="activity-exibir">Exibir:</span>
-                            <button class="activity-tab active" data-activity="todos">Todos</button>
-                            <button class="activity-tab" data-activity="comentarios">Comentários</button>
-                            <button class="activity-tab" data-activity="historico">Histórico</button>
+                            <span class="activity-exibir">Show:</span>
+                            <button class="activity-tab active" data-activity="all">All</button>
+                            <button class="activity-tab" data-activity="comments">Comments</button>
+                            <button class="activity-tab" data-activity="history">History</button>
                         </div>
                         <div class="modal-comment-row">
                             <span class="assignee-avatar" style="flex-shrink:0">VF</span>
-                            <div class="comment-placeholder">Adicionar um comentário...</div>
+                            <div class="comment-placeholder">Add a comment...</div>
                         </div>
-                        <div class="modal-activity-empty">Nenhuma atividade ainda.</div>
+                        <div class="modal-activity-empty">No activity yet.</div>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="modal-sidebar">
                     <div class="sidebar-field">
-                        <div class="sidebar-label">Responsável</div>
+                        <div class="sidebar-label">Assignee</div>
                         <div class="sidebar-person">
                             <span class="assignee-avatar">VF</span>
                             <span class="sidebar-person-name">Victor Ferreira</span>
@@ -655,7 +826,7 @@
                         <div class="modal-tags"></div>
                     </div>
                     <div class="sidebar-field">
-                        <div class="sidebar-label">Prioridade</div>
+                        <div class="sidebar-label">Priority</div>
                         <div class="modal-priority"></div>
                     </div>
                     <div class="sidebar-field">
@@ -663,21 +834,21 @@
                         <div class="modal-points"></div>
                     </div>
                     <div class="sidebar-field">
-                        <div class="sidebar-label">Tipo</div>
+                        <div class="sidebar-label">Type</div>
                         <div class="modal-type"></div>
                     </div>
                     <div class="sidebar-field" id="modal-created-field">
-                        <div class="sidebar-label">Criado Em</div>
+                        <div class="sidebar-label">Created At</div>
                         <div class="modal-created"></div>
                     </div>
                     <div class="sidebar-field" id="modal-company-field">
-                        <div class="sidebar-label">Empresa</div>
+                        <div class="sidebar-label">Company</div>
                         <div class="modal-company"></div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal-footer-bar">Atualizado há 2 horas</div>
+            <div class="modal-footer-bar">Updated 2 hours ago</div>
         </div>
     </div>
 </body>

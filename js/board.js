@@ -60,18 +60,19 @@ const modal    = document.getElementById('card-modal');
 const closeBtn = modal.querySelector('.modal-close');
 
 const TYPE_MAP = {
-    'panel-skills':      { label: 'Skill',        icon: '' },
-    'panel-experiencia': { label: 'Experiência',   icon: '' },
-    'panel-formacao':    { label: 'Formação',      icon: '' },
-    'panel-extras':      { label: 'Certificação',  icon: '' },
+    'panel-skills':      { label: 'Skill',          icon: '' },
+    'panel-experiencia': { label: 'Experience',      icon: '' },
+    'panel-formacao':    { label: 'Education',       icon: '' },
+    'panel-extras':      { label: 'Certification',   icon: '' },
 };
 
 // "Criado Em" para cards sem meta-date
 const CREATED_MAP = {
-    'SKL-001': 'Mar, 2022', 'SKL-002': 'Jan, 2020', 'SKL-003': 'Mar, 2024',
-    'SKL-004': 'Jan, 2019', 'SKL-005': 'Jan, 2020', 'SKL-006': 'Jan, 2019',
-    'SKL-007': 'Jan, 2020', 'SKL-008': 'Jan, 2019', 'SKL-009': 'Jan, 2020',
-    'SKL-010': 'Jan, 1998',
+    'SKL-001': 'Jan, 2019', 'SKL-002': 'Mar, 2021', 'SKL-003': 'Jun, 2020',
+    'SKL-004': 'Jan, 2020', 'SKL-005': 'Mar, 2022', 'SKL-006': 'Jan, 2019',
+    'SKL-007': 'Jan, 2018', 'SKL-008': 'Mar, 2023', 'SKL-009': 'Jun, 2021',
+    'SKL-010': 'Jan, 2022', 'SKL-011': 'Jun, 2020', 'SKL-012': 'Mar, 2024',
+    'SKL-013': 'Jan, 2024', 'SKL-014': 'Jun, 2023', 'SKL-015': 'Mar, 2021',
 };
 
 function priorityClass(el) {
@@ -82,7 +83,7 @@ function priorityClass(el) {
 function openModal(card) {
     const id         = card.querySelector('.card-id')?.textContent.trim()  || '';
     const title      = card.querySelector('.card-title')?.textContent.trim() || '';
-    const desc       = card.querySelector('.card-desc')?.textContent.trim()  || 'Sem descrição adicional.';
+    const desc       = card.querySelector('.card-desc')?.textContent.trim()  || 'No description provided.';
     const points     = card.querySelector('.card-points')?.textContent.trim() || '—';
     const priorityEl = card.querySelector('.priority');
     const dateEl     = card.querySelector('.meta-date');

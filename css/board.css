@@ -163,14 +163,14 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.83rem;
     cursor: pointer;
-    transition: color 0.15s;
+    transition: color 0.15s, background 0.15s;
     white-space: nowrap;
     flex: 1;
     text-align: center;
 }
 
-.board-tab:hover   { color: #e6edf3; }
-.board-tab.active  { color: #e6edf3; border-bottom-color: #3fb950; }
+.board-tab:hover  { color: #e6edf3; background: rgba(255,255,255,0.05); }
+.board-tab.active { color: #e6edf3; border-bottom-color: #3fb950; background: rgba(63,185,80,0.08); }
 
 /* ═══════════════════════════════════════════════════════════
    #jira-board  (fills the rest of the window)

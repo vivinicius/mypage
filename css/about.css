@@ -1,0 +1,207 @@
+/* css/about.css — About Me section (inside fixed #hero, dark bg #151515) */
+
+/* ── Fluid Background Canvas (Tela Cheia) ── */
+#aboutFluidCanvas {
+    position: fixed; /* Ocupa a tela toda de forma fixa */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Acima do fundo preto do hero, mas abaixo do conteúdo do about */
+    pointer-events: none;
+    opacity: 0; /* JS controla a opacidade */
+}
+
+#about-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    max-width: 1200px;
+    z-index: 8;
+    will-change: opacity;
+    pointer-events: none; /* toggled dynamically */
+}
+
+/* ── Two-column grid ── */
+.about-inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 6vw;
+    align-items: center;
+    position: relative; 
+    z-index: 1;
+}
+
+/* ────────────────────────────────────
+   LEFT COLUMN
+   ──────────────────────────────────── */
+
+.about-col-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Eyebrow */
+.about-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--primary-green);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.about-eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.8rem;
+    height: 1.5px;
+    background: var(--primary-green);
+    flex-shrink: 0;
+}
+
+/* Headline */
+.about-headline {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Overflow mask — clips the sliding line */
+.about-line-mask {
+    overflow: hidden;
+    line-height: 1.08;
+}
+
+.about-line {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.8rem);
+    color: #ffffff;
+    line-height: 1.08;
+    will-change: transform;
+}
+
+/* Italic gradient line ("intelligent,") */
+.about-line em {
+    font-style: italic;
+    background: linear-gradient(110deg, #60a5fa 0%, #93c5fd 55%, #bfdbfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Body paragraphs */
+.about-p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.82rem, 1.2vw, 1rem);
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.75;
+    margin: 0;
+    will-change: opacity, transform;
+}
+
+/* Highlighted keywords inside paragraphs */
+.hl {
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 500;
+}
+
+/* ────────────────────────────────────
+   RIGHT COLUMN — Stat cards 2×2
+   ──────────────────────────────────── */
+
+.about-col-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.6rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    will-change: opacity, transform;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.stat-plus {
+    font-size: 0.55em;
+    color: var(--primary-green);
+    vertical-align: super;
+}
+
+.stat-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.68rem, 0.9vw, 0.82rem);
+    color: rgba(255, 255, 255, 0.38);
+    line-height: 1.45;
+}
+
+.stat-label small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 0.15rem;
+    letter-spacing: 0.05em;
+}
+
+/* CSTE card — text instead of number */
+.stat-card--cert .stat-cert {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    color: #ffffff;
+    line-height: 1;
+}
+
+/* ────────────────────────────────────
+   Responsive
+   ──────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-col-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6rem;
+    }
+
+    .stat-card {
+        padding: 1.2rem 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-col-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-line {
+        font-size: clamp(2.4rem, 9vw, 4rem);
+    }
+}

@@ -125,3 +125,24 @@ body:has(#loader.loaded) .linkedin {
     height: auto;
     display: block;
 }
+
+/* --- Scroll Icon Global --- */
+.scroll-icon {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4vw;
+    height: auto;
+    z-index: 15;
+    filter: invert(1) drop-shadow(0px 0px 5px rgb(0, 0, 0));
+    animation: scrollPulse 2s infinite ease-in-out;
+    pointer-events: none;
+    will-change: opacity, transform;
+}
+
+@keyframes scrollPulse {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}

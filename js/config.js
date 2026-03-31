@@ -1,25 +1,25 @@
 export const CONFIG = {
-    // Fluid Simulation
+    // Fluid Simulation (Parâmetros alinhados com Cursify / inspira-ui)
     simResolution: 128,
-    dyeResolution: 512,
-    densityDissipation: 0.900,
-    velocityDissipation: 0.990,
-    splatRadius: 0.0300,
-    splatForce: 0.080,
-    velocityThreshold: 4,
+    dyeResolution: 1440,
+    densityDissipation: 0.90,  // Dissipa rápido → efeito cogumelo que some
+    velocityDissipation: 0.93, // Velocidade persiste moderado
+    pressure: 0.1,             // Baixo → fluido se expande livremente
+    curl: 1,                   // Suave → bloom oval, não espiral compacta
+    splatRadius: 0.30,         // Rastro mais largo
+    splatForce: 3000,          // Força reduzida → expansão controlada
+    velocityThreshold: 5,      // Só cria efeito em movimentos mais rápidos
     textOffsetY: 0.12,
-    fluidColor: [0.1412, 0.2118, 0.3412], // #243657
+    fluidColor: [0.1, 0.4, 1.0], // Base azul vibrante
 
     // Scroll & Layout
     scroll: {
         scaleMin: 0.10,
         borderMax: 80,
         zoomDistanceMultiplier: 1.0,
-        lockThresholdFactor: 2.2,
-        loreStartFactor: 0.8,
-        loreEndFactor: 1.6,
-        fillStartFactor: 0.4,
-        fillEndFactor: 1.2
+        aboutStartFactor: 0.6,
+        aboutEndFactor:   1.4,
+        lockThresholdFactor: 2.0,
     },
 
     // Animation & Parallax

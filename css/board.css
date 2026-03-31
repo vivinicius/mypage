@@ -12,10 +12,7 @@
    BOARD WINDOW
 ═══════════════════════════════════════════════════════════ */
 #board-window {
-    position: absolute;
-    top: 13%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     width: 95%;
     max-width: 1350px;
     height: 82vh;

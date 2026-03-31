@@ -2,12 +2,12 @@
 
 #hero-wrapper {
     position: relative;
-    height: 320vh;
-    background-color: #e8e8e8;
+    height: 300vh;
+    background-color: #0e0e0e;
     /* Grid de fundo */
     background-image: 
-        linear-gradient(rgba(81, 81, 81, 0.168) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(81, 81, 81, 0.168) 1px, transparent 1px);
+        linear-gradient(rgba(81, 81, 81, 0) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(81, 81, 81, 0) 1px, transparent 1px);
     background-size: 50px 50px;
     overflow: hidden;
 }
@@ -150,33 +150,51 @@
     letter-spacing: 0.1em;
 }
 
+/* Section label that appears above the board — simple, fixed position */
 .reveal-text {
     position: absolute;
-    top: 50%;
+    top: 7%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 8vw;
-    font-family: 'DM Serif Display', serif;
-    letter-spacing: 0.15em;
-    z-index: 5;
+    transform: translateX(-50%);
+    z-index: 7;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
-    will-change: transform, top;
+    will-change: opacity;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
 }
 
-.text-base { color: rgba(20, 20, 20, 0.05); }
+/* The visible label — only .text-base is shown; .text-fill is hidden */
+.text-base {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+}
 
+.text-base::before {
+    content: '//';
+    margin-right: 0.4em;
+    color: var(--primary-green);
+}
+
+/* Decorative line after the label */
+.text-base::after {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+/* Fill span is unused — hidden */
 .text-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0%;
-    height: 100%;
-    color: #393939;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: width 0.05s linear;
+    display: none;
 }
 
 #hero-inner {

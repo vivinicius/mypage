@@ -1,15 +1,15 @@
 /* css/about.css — About Me section (inside fixed #hero, dark bg #151515) */
 
-/* ── Fluid Background Canvas (Tela Cheia) ── */
+/* ── Fluid Background Canvas (Tela Cheia Global) ── */
 #aboutFluidCanvas {
-    position: fixed; /* Ocupa a tela toda de forma fixa */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Acima do fundo preto do hero, mas abaixo do conteúdo do about */
+    z-index: 5; /* Atrás do Hero (10) e do About (8), mas acima do Body */
     pointer-events: none;
-    opacity: 0; /* JS controla a opacidade */
+    opacity: 0; 
 }
 
 #about-section {
@@ -122,7 +122,7 @@
     align-items: center;
     gap: 0.75rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     color: var(--primary-green);
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -132,8 +132,8 @@
 .about-eyebrow::before {
     content: '';
     display: block;
-    width: 1.8rem;
-    height: 1.5px;
+    width: 2.2rem;
+    height: 2px;
     background: var(--primary-green);
     flex-shrink: 0;
 }

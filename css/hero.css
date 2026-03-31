@@ -3,7 +3,7 @@
 #hero-wrapper {
     position: relative;
     height: 300vh;
-    background-color: #0e0e0e;
+    background-color: transparent;
     /* Grid de fundo */
     background-image: 
         linear-gradient(rgba(81, 81, 81, 0) 1px, transparent 1px),

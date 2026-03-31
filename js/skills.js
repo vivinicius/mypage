@@ -43,26 +43,25 @@ export class SkillsReveal {
         }
 
         // ── 3. Animação de Reveal ──
-        // Revela 100% nos primeiros 60vh de scroll.
-        const revealDuration = vh * 0.6;
-        const progress = Math.min(scrolled / revealDuration, 1);
+        // Começa a aparecer quando o topo da seção entra na tela (80% da vh)
+        // e termina de centralizar exatamente quando dá o LOCK (rect.top == 0)
+        const revealRange = vh * 0.8;
+        const revealProgress = Math.max(0, Math.min((revealRange - rect.top) / revealRange, 1));
         
-        this.board.style.opacity = progress.toFixed(3);
-        const yOffset = (35 - (progress * 35)).toFixed(2);
-        this.board.style.transform = `translateY(${yOffset}px)`;
+        this.board.style.opacity = revealProgress.toFixed(3);
+        // Vem da direita (60vw) para o centro (0)
+        const xOffset = (60 * (1 - revealProgress)).toFixed(2);
+        this.board.style.transform = `translateX(${xOffset}vw)`;
 
         // ── 4. Scroll Indicator ──
         if (this.scrollIndicator) {
             let iconOpacity = 0;
             
-            // O ícone só começa a aparecer DEPOIS que o board revelou (progress == 1)
-            if (progress >= 1.0) {
-                // Progresso dentro da fase de LOCK (do fim da revelação até o fim da seção)
-                const lockScrolled = scrolled - revealDuration;
-                const lockTotal    = scrollable - revealDuration;
-                const lockProgress = Math.min(lockScrolled / lockTotal, 1.0);
+            // O ícone só começa a aparecer DEPOIS que o board está 100% centralizado (lock ativo)
+            if (revealProgress >= 1.0 && rect.top <= 0) {
+                // Progresso dentro da fase de LOCK
+                const lockProgress = Math.min(scrolled / scrollable, 1.0);
                 
-                // Surge rápido no início do lock e some suave no final do lock
                 if (lockProgress < 0.2) {
                     iconOpacity = lockProgress / 0.2;
                 } else if (lockProgress > 0.8) {
@@ -72,11 +71,11 @@ export class SkillsReveal {
                 }
             }
             
-            this.scrollIndicator.style.opacity = (iconOpacity * 0.6).toFixed(3); // 0.6 de brilho max
+            this.scrollIndicator.style.opacity = (iconOpacity * 0.6).toFixed(3);
             this.scrollIndicator.style.pointerEvents = iconOpacity > 0.1 ? "auto" : "none";
         }
 
         // ── 5. Interatividade ──
-        this.board.style.pointerEvents = progress > 0.5 ? "auto" : "none";
+        this.board.style.pointerEvents = revealProgress > 0.8 ? "auto" : "none";
     }
 }

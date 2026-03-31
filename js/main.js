@@ -187,7 +187,10 @@ class App {
             
             // Sincroniza o fluido do background
             if (this.nodes.aboutFluidCanvas) {
-                this.nodes.aboutFluidCanvas.style.opacity = ap.toFixed(4);
+                // Só começa a aparecer depois que o Hero branco começou a diminuir (p > 0.5)
+                const targetOpacity = Math.max(0, (p - 0.5) * 2);
+                const currentOpacity = parseFloat(this.nodes.aboutFluidCanvas.style.opacity || 0);
+                this.nodes.aboutFluidCanvas.style.opacity = Math.max(currentOpacity, targetOpacity).toFixed(4);
             }
 
             // Splash inicial assim que o about section se torna visível

@@ -25,6 +25,7 @@ class App {
             brushCanvas:  document.getElementById('brushCanvas'),
             aboutFluidCanvas: document.getElementById('aboutFluidCanvas'),
             aboutSection: document.getElementById('about-section'),
+            aboutWindow:  document.querySelector('.about-window'),
             aboutScroll:  document.querySelector('.about-scroll-icon'),
             initialScroll: document.getElementById('scrollIcon'),
         };
@@ -36,7 +37,8 @@ class App {
             aboutProgress:  0,
             aboutInitialized: false,
             mouse: { x: 0, y: 0, prevX: 0, prevY: 0, onPage: false, pendingSplat: false },
-            parallax: { imgCX: 0, imgCY: 0, imgTX: 0, imgTY: 0, qaCX: 0, qaCY: 0, qaTX: 0, qaTY: 0 }
+            parallax: { imgCX: 0, imgCY: 0, imgTX: 0, imgTY: 0, qaCX: 0, qaCY: 0, qaTX: 0, qaTY: 0 },
+            tilt: { rotX: 0, rotY: 0, targetX: 0, targetY: 0 }
         };
     }
 
@@ -114,6 +116,30 @@ class App {
         this.state.mouse.onPage = false;
         this.state.parallax.imgTX = 0; this.state.parallax.imgTY = 0;
         this.state.parallax.qaTX  = 0; this.state.parallax.qaTY  = 0;
+        this.state.tilt.targetX   = 0; this.state.tilt.targetY   = 0;
+    }
+
+    updateTilt() {
+        const { tilt, aboutProgress, mouse } = this.state;
+        const win = this.nodes.aboutWindow;
+        if (!win || aboutProgress < 0.1) {
+            tilt.targetX = 0;
+            tilt.targetY = 0;
+        } else if (mouse.onPage) {
+            const rect = win.getBoundingClientRect();
+            const cx   = rect.left + rect.width  / 2;
+            const cy   = rect.top  + rect.height / 2;
+            const ndx  = (mouse.x - cx) / (rect.width  / 2); // -1 a 1
+            const ndy  = (mouse.y - cy) / (rect.height / 2); // -1 a 1
+            const MAX  = 6; // graus máximos de inclinação
+            tilt.targetY =  ndx * MAX; // mouse direita → janela vira à direita
+            tilt.targetX = -ndy * MAX; // mouse baixo  → janela inclina pra frente
+        }
+
+        tilt.rotX = lerp(tilt.rotX, tilt.targetX, 0.06);
+        tilt.rotY = lerp(tilt.rotY, tilt.targetY, 0.06);
+
+        win.style.transform = `rotateX(${tilt.rotX.toFixed(3)}deg) rotateY(${tilt.rotY.toFixed(3)}deg)`;
     }
 
     updateParallax() {
@@ -220,6 +246,7 @@ class App {
     render(t = 0) {
         this.updateScrollEffects();
         this.updateParallax();
+        this.updateTilt();
         this.updateFluid();
         this.waves.draw(t);
         this.fluid.render();

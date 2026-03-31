@@ -44,6 +44,48 @@
             <!-- ── ABOUT ME SECTION (aparece antes do Skills Board) ── -->
             <div id="about-section" style="opacity: 0;">
 
+                <!-- Decorative Test Scenarios Background -->
+                <div class="about-code-bg" data-about-body="7">
+                    
+                    <div class="code-snippet">
+                        <span class="c"># High-load performance validation</span><br>
+                        <span class="k">Feature:</span> <span class="s">Bulk Order Processing</span><br>
+                        &nbsp;&nbsp;<span class="k">Scenario:</span> <span class="s">Validate 5k items throughput</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">Given</span> a JSON payload with <span class="n">5000</span> items<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">When</span> I POST to <span class="v">"/api/v2/orders/bulk"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">And</span> I wait for process ID <span class="v">"772"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">Then</span> response time <span class="k">is</span> <span class="n">< 450ms</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">And</span> DB reflects <span class="v">"COMPLETED"</span> status
+                    </div>
+
+                    <div class="code-snippet">
+                        <span class="p">Scenario Outline:</span> <span class="s">Auth Roles Validation</span><br>
+                        &nbsp;&nbsp;<span class="k">Given</span> the user is on <span class="v">"<page>"</span><br>
+                        &nbsp;&nbsp;<span class="k">When</span> I login with <span class="v">"<role>"</span> credentials<br>
+                        &nbsp;&nbsp;<span class="k">Then</span> access <span class="k">should</span> be <span class="v">"<allow>"</span><br><br>
+                        &nbsp;&nbsp;<span class="p">Examples:</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;| <span class="v">page</span> | <span class="v">role</span> | <span class="v">allow</span> |<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;| <span class="v">Admin</span> | <span class="v">ROOT</span> | <span class="v">TRUE</span> |<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;| <span class="v">Store</span> | <span class="v">USER</span> | <span class="v">FALSE</span>|
+                    </div>
+
+                    <div class="code-snippet">
+                        <span class="k">Feature:</span> <span class="s">UI Gestures Suite</span><br>
+                        &nbsp;&nbsp;<span class="k">Scenario:</span> <span class="s">Swipe to Delete Item</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">Given</span> mobile app is on <span class="v">"Inbox"</span> view<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">When</span> I perform a <span class="v">"Left Swipe"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">And</span> click on the <span class="v">"Trash"</span> icon<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="k">Then</span> element <span class="k">should</span> <span class="k">not</span> be visible
+                    </div>
+
+                    <div class="code-snippet">
+                        <span class="c"># SQL validation for data integrity</span><br>
+                        <span class="k">When</span> SQL query <span class="v">"SELECT * FROM inventory"</span><br>
+                        &nbsp;&nbsp;<span class="k">Then</span> row count <span class="k">is</span> <span class="n">> 0</span>
+                    </div>
+
+                </div>
+
                 <!-- Eyebrow fora da janela -->
                 <div class="about-eyebrow">
                     <span>About Me</span>

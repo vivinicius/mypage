@@ -64,13 +64,47 @@
 /* ── Two-column grid ── */
 .about-inner {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 3.5fr 2fr;
     gap: 6vw;
     align-items: center;
     position: relative;
     z-index: 1;
     padding: 2.5rem 3rem;
 }
+
+/* ── Decorative Background Code ── */
+.about-code-bg {
+    position: absolute;
+    top: -5%;
+    right: -25%;
+    width: 450px;
+    height: 110%;
+    z-index: -1; /* Fica atrás da janela */
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.18; /* Sutil, para aparecer pelo blur */
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    will-change: opacity, transform;
+}
+
+.code-snippet {
+    transform: rotate(1deg); /* Leve inclinação para dar profundidade */
+}
+
+/* VS Code Gherkin Syntax Colors */
+.about-code-bg .k { color: #569cd6; } /* Keywords (Blue) */
+.about-code-bg .s { color: #ce9178; } /* Scenarios/Features (Peach/Orange) */
+.about-code-bg .v { color: #9cdcfe; } /* Values/Strings (Light Blue) */
+.about-code-bg .n { color: #b5cea8; } /* Numbers (Light Green) */
+.about-code-bg .p { color: #c586c0; } /* Scenario Outline / Examples (Purple/Magenta) */
+.about-code-bg .c { color: #6a9955; } /* Comments (Green) */
 
 /* ────────────────────────────────────
    LEFT COLUMN
@@ -123,6 +157,7 @@
     color: #ffffff;
     line-height: 1.08;
     will-change: transform;
+    white-space: nowrap;
 }
 
 /* Italic gradient line ("intelligent,") */

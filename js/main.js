@@ -264,13 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
     new App();
 
     if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
+        window.lenis = new Lenis({
             duration:        1.3,
             easing:          t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smoothWheel:     true,
             wheelMultiplier: 1,
         });
 
+        const lenis = window.lenis;
         function lenisRaf(time) {
             lenis.raf(time);
             requestAnimationFrame(lenisRaf);

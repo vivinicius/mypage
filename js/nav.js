@@ -33,7 +33,11 @@ items.forEach(item => {
             top = (skillsSection?.offsetTop ?? 0) + vh * 0.25;
         }
 
-        window.scrollTo({ top, behavior: 'smooth' });
+        if (window.lenis) {
+            window.lenis.scrollTo(top, { duration: 2.6 });
+        } else {
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
     });
 });
 

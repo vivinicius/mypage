@@ -28,9 +28,9 @@ items.forEach(item => {
         let   top = 0;
 
         if (item.dataset.section === 'about') {
-            top = vh * 1.4;
+            top = vh * 1.6;
         } else if (item.dataset.section === 'board') {
-            top = skillsSection?.offsetTop ?? 0;
+            top = (skillsSection?.offsetTop ?? 0) + vh * 0.25;
         }
 
         window.scrollTo({ top, behavior: 'smooth' });

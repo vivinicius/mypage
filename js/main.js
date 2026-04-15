@@ -129,8 +129,8 @@ class App {
             const rect = win.getBoundingClientRect();
             const cx   = rect.left + rect.width  / 2;
             const cy   = rect.top  + rect.height / 2;
-            const ndx  = (mouse.x - cx) / (rect.width  / 2); // -1 a 1
-            const ndy  = (mouse.y - cy) / (rect.height / 2); // -1 a 1
+            const ndx  = Math.max(-1, Math.min(1, (mouse.x - cx) / (rect.width  / 2)));
+            const ndy  = Math.max(-1, Math.min(1, (mouse.y - cy) / (rect.height / 2)));
             const MAX  = 6; // graus máximos de inclinação
             tilt.targetY =  ndx * MAX; // mouse direita → janela vira à direita
             tilt.targetX = -ndy * MAX; // mouse baixo  → janela inclina pra frente

@@ -64,7 +64,4 @@
 /* ── Scroll Indicator (Specific for board) ── */
 .board-scroll-icon {
     bottom: 2vh;
-    opacity: 0.6;
-    filter: invert(1) brightness(0.8);
-    width: 3vw;
 }

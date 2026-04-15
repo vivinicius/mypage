@@ -205,7 +205,9 @@
     flex: 1;
     min-height: 0;
     overflow: hidden;
-    background: transparent;
+    background: rgba(13, 17, 23, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 /* ═══════════════════════════════════════════════════════════

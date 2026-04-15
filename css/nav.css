@@ -1,0 +1,104 @@
+/* css/nav.css — Side navigation */
+
+#side-nav {
+    position: fixed;
+    left: 1.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    mix-blend-mode: difference;
+    pointer-events: none;
+}
+
+.snav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    color: white;
+    pointer-events: auto;
+    cursor: pointer;
+    padding: 0.1rem 0;
+}
+
+.snav-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.snav-icon-wrap svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-width 0.25s ease;
+}
+
+.snav-item:hover .snav-icon-wrap {
+    border-color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.08);
+}
+
+.snav-item.active .snav-icon-wrap {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.snav-item.active .snav-icon-wrap svg {
+    stroke-width: 2;
+}
+
+/* Label slides in on hover */
+.snav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: white;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    pointer-events: none;
+}
+
+.snav-item:hover .snav-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Thin line connecting the dots */
+.snav-connector {
+    width: 1px;
+    height: 1.6rem;
+    background: rgba(255, 255, 255, 0.18);
+    margin-left: 17.5px;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+/* Active connector segment gets brighter */
+.snav-item.active + .snav-connector {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+    #side-nav {
+        display: none;
+    }
+}

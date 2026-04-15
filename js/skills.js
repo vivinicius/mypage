@@ -9,9 +9,32 @@ export class SkillsReveal {
         
         if (!this.section || !this.container || !this.board) return;
 
+        this._cardsRevealed = false;
+        this._hideAllCards();
+
         this._update = this._update.bind(this);
         window.addEventListener('scroll', this._update, { passive: true });
         this._update();
+    }
+
+    _hideAllCards() {
+        document.querySelectorAll('.board-card').forEach(card => {
+            card.style.transition = 'none';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(22px)';
+        });
+    }
+
+    _revealActiveCards() {
+        const panel = document.querySelector('.board-tab-panel.active');
+        if (!panel) return;
+        Array.from(panel.querySelectorAll('.board-card')).forEach((card, i) => {
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.44s ease, transform 0.44s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, i * 38);
+        });
     }
 
     _update() {
@@ -71,11 +94,21 @@ export class SkillsReveal {
                 }
             }
             
-            this.scrollIndicator.style.opacity = (iconOpacity * 0.6).toFixed(3);
+            this.scrollIndicator.style.opacity = iconOpacity.toFixed(3);
             this.scrollIndicator.style.pointerEvents = iconOpacity > 0.1 ? "auto" : "none";
         }
 
         // ── 5. Interatividade ──
         this.board.style.pointerEvents = revealProgress > 0.8 ? "auto" : "none";
+
+        // ── 6. Card Reveal ──
+        if (revealProgress >= 0.55 && !this._cardsRevealed) {
+            this._cardsRevealed = true;
+            this._revealActiveCards();
+        }
+        if (revealProgress < 0.05 && this._cardsRevealed) {
+            this._cardsRevealed = false;
+            this._hideAllCards();
+        }
     }
 }

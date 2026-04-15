@@ -42,6 +42,26 @@ function updateColumnWidths() {
     });
 }
 
+// ── Card reveal animation ────────────────────────────────────
+function revealPanelCards(panel) {
+    if (!panel) return;
+    const cards = Array.from(panel.querySelectorAll('.board-card'));
+    cards.forEach(card => {
+        card.style.transition = 'none';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(22px)';
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        cards.forEach((card, i) => {
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, i * 30);
+        });
+    }));
+}
+
 // ── Tab switching ────────────────────────────────────────────
 document.querySelectorAll('.board-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -49,8 +69,10 @@ document.querySelectorAll('.board-tab').forEach(tab => {
         document.querySelectorAll('.board-tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.board-tab-panel').forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
-        document.getElementById(`panel-${target}`).classList.add('active');
+        const newPanel = document.getElementById(`panel-${target}`);
+        newPanel.classList.add('active');
         requestAnimationFrame(updateColumnWidths);
+        revealPanelCards(newPanel);
     });
 });
 

@@ -2,8 +2,6 @@
 
 const T = {
     en: {
-        // Hero
-        'hero.expText':            'years experience',
         // About Me
         'about.eyebrow':           'About Me',
         'about.line0':             'Quality is',
@@ -88,8 +86,6 @@ const T = {
     },
 
     pt: {
-        // Hero
-        'hero.expText':            'anos de experiência',
         // About Me
         'about.eyebrow':           'Sobre Mim',
         'about.line0':             'Qualidade é',
@@ -176,7 +172,6 @@ const T = {
 
 // [selector, key, useHTML]
 const ELEMENTS = [
-    ['.exp-text',                                                   'hero.expText',         false],
     ['.about-eyebrow span',                                         'about.eyebrow',        false],
     ['.about-line[data-about-line="0"]',                            'about.line0',          false],
     ['.about-line[data-about-line="1"]',                            'about.line1',          true],

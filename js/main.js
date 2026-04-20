@@ -25,7 +25,7 @@ class App {
             brushCanvas:  document.getElementById('brushCanvas'),
             aboutFluidCanvas: document.getElementById('aboutFluidCanvas'),
             aboutSection: document.getElementById('about-section'),
-            aboutWindow:  document.querySelector('.about-window'),
+            aboutWindow:  document.querySelector('.about-window-outer'),
             aboutScroll:  document.querySelector('.about-scroll-icon'),
             initialScroll: document.getElementById('scrollIcon'),
         };

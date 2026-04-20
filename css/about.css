@@ -106,8 +106,6 @@
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.04),
         0 24px 60px rgba(0, 0, 0, 0.5);
-    will-change: transform;
-    transform: rotateX(0deg) rotateY(0deg);
 }
 
 .about-titlebar {

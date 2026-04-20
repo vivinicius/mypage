@@ -26,10 +26,78 @@
     perspective-origin: center center;
 }
 
+/* ── Animated glow border ── */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderRotate {
+    to { --border-angle: 360deg; }
+}
+
+.about-window-outer {
+    position: relative;
+    border-radius: 13px;
+}
+
+/* Borda animada — mask-composite perfura o centro, mostra só a linha de 1px */
+.about-window-outer::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 14px;
+    padding: 1px;
+    background: conic-gradient(from var(--border-angle),
+        transparent 0deg,
+        rgba(96, 165, 250, 0.9) 55deg,
+        rgba(147, 197, 253, 0.5) 100deg,
+        transparent 170deg,
+        transparent 265deg,
+        rgba(96, 165, 250, 0.6) 315deg,
+        transparent 360deg
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: borderRotate 6s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Glow difuso atrás da janela */
+.about-window-outer::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 18px;
+    background: conic-gradient(from var(--border-angle),
+        transparent 0deg,
+        rgba(96, 165, 250, 0.7) 55deg,
+        rgba(147, 197, 253, 0.4) 100deg,
+        transparent 170deg,
+        transparent 265deg,
+        rgba(96, 165, 250, 0.4) 315deg,
+        transparent 360deg
+    );
+    filter: blur(14px);
+    opacity: 0.85;
+    z-index: -1;
+    animation: borderRotate 6s linear infinite;
+    pointer-events: none;
+}
+
+
 /* ── Browser window chrome ── */
 .about-window {
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none;
     border-radius: 12px;
     overflow: hidden;
     background: rgba(13, 17, 23, 0.55);
@@ -43,22 +111,85 @@
 }
 
 .about-titlebar {
-    height: 44px;
-    background: rgba(33, 38, 45, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: 52px;
+    background: rgba(28, 28, 32, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    gap: 1rem;
+    padding: 0 14px;
+    gap: 10px;
     user-select: none;
     flex-shrink: 0;
 }
 
-.about-window-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.3);
-    letter-spacing: 0.05em;
+/* ── Safari nav buttons (back/forward, share, tabs) ── */
+.safari-nav-btns {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 4px;
+}
+
+.safari-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.28);
+    cursor: default;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.safari-nav-btn svg {
+    width: 13px;
+    height: 13px;
+}
+
+/* ── URL bar ── */
+.safari-urlbar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    padding: 0 12px;
+    min-width: 0;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.safari-lock-icon {
+    width: 11px;
+    height: 11px;
+    color: rgba(255, 255, 255, 0.32);
+    flex-shrink: 0;
+}
+
+.safari-url-text {
+    font-family: -apple-system, 'SF Pro Text', 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.52);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Right-side actions ── */
+.safari-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
 }
 
 /* ── Two-column grid ── */
@@ -79,23 +210,40 @@
     right: -25%;
     width: 450px;
     height: 110%;
-    z-index: -1; /* Fica atrás da janela */
+    z-index: -1;
     pointer-events: none;
     user-select: none;
-    opacity: 0.18; /* Sutil, para aparecer pelo blur */
+    opacity: 0.45;
+    overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     line-height: 1.5;
     will-change: opacity, transform;
 }
 
+.about-code-track {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    animation: codeScrollDown 40s linear infinite;
+}
+
+.about-code-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+@keyframes codeScrollDown {
+    0%   { transform: translateY(-50%); }
+    100% { transform: translateY(0%); }
+}
+
 .code-snippet {
-    transform: rotate(1deg); /* Leve inclinação para dar profundidade */
+    transform: rotate(1deg);
 }
 
 /* VS Code Gherkin Syntax Colors */
